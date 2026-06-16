@@ -1,4 +1,4 @@
-import { ArrowRight, Clock, Shield, MapPin, Star } from 'lucide-react';
+import { ArrowRight, Clock, Shield, MapPin } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -70,42 +70,34 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right — Visual Anchor (visible on all screens) */}
+          {/* Right — Fleet Photo */}
           <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-lg">
               <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-amber-500/5 rounded-2xl blur-2xl" />
-              <div className="relative card-base p-8 flex flex-col items-center gap-6 text-center border-amber-500/20">
-                <div className="w-24 h-24 rounded-full bg-amber-500/10 border-2 border-amber-500/30 flex items-center justify-center">
-                  <Shield className="w-10 h-10 text-amber-500" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold text-white mb-1">Tony Zamberlin</div>
-                  <div className="text-sm text-amber-500 font-semibold">
-                    Professional Driver & Transport Operator
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-3 w-full">
-                  <div className="bg-navy-900/50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-gradient">21+</div>
-                    <div className="text-[10px] text-navy-600 mt-0.5">Years</div>
-                  </div>
-                  <div className="bg-navy-900/50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-gradient">0</div>
-                    <div className="text-[10px] text-navy-600 mt-0.5">Accidents</div>
-                  </div>
-                  <div className="bg-navy-900/50 rounded-lg p-3 text-center">
-                    <div className="flex items-center justify-center gap-0.5">
-                      <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                      <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                      <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              <div className="relative rounded-2xl overflow-hidden border border-amber-500/20 shadow-2xl">
+                <img
+                  src="/May_17,_2026,_11_03_17_PM.png"
+                  alt="Tony Drives fleet — white Kia Sedona van and Ford F-250 with trailer"
+                  className="w-full h-auto object-cover"
+                />
+                {/* Overlay caption */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-5 py-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-white font-bold text-sm">The Tony Drives Fleet</div>
+                      <div className="text-amber-500 text-xs">Kia Sedona Van + F-250 with Trailer</div>
                     </div>
-                    <div className="text-[10px] text-navy-600 mt-0.5">Rated</div>
+                    <div className="flex gap-3 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-gradient">21+</div>
+                        <div className="text-[10px] text-white/60">Yrs Exp.</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-gradient">0</div>
+                        <div className="text-[10px] text-white/60">Accidents</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="w-full border-t border-navy-700/50 pt-4">
-                  <p className="text-xs text-navy-600">
-                    Professional driver profile photo placeholder
-                  </p>
                 </div>
               </div>
             </div>
