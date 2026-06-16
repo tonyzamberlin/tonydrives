@@ -51,7 +51,7 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -67,9 +67,11 @@ export default function Header() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden p-2 text-white hover:text-amber-500 transition-colors"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -80,7 +82,7 @@ export default function Header() {
           mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="section-container pb-6 space-y-1 bg-navy-900/95 backdrop-blur-md border-t border-navy-700/50">
+        <nav id="mobile-nav" className="section-container pb-6 space-y-1 bg-navy-900/95 backdrop-blur-md border-t border-navy-700/50" aria-label="Mobile navigation">
           {navLinks.map((link) => (
             <a
               key={link.href}

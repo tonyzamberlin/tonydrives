@@ -1,35 +1,35 @@
 import { Shield, Award, Route } from 'lucide-react';
 
+const stats = [
+  { icon: Shield, value: '21+', label: 'Years Experience' },
+  { icon: Award, value: '0', label: 'Accidents on Record' },
+  { icon: Route, value: '3', label: 'Upstate Counties Served' },
+  { icon: Shield, value: '24/7', label: 'Rush Service Available' },
+];
+
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-navy-800/50">
+    <section
+      id="about"
+      className="section-padding bg-navy-800/50"
+      aria-labelledby="about-heading"
+      itemScope
+      itemType="https://schema.org/LocalBusiness"
+    >
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — Visual */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="card-base p-6 text-center card-hover">
-                <Shield className="w-8 h-8 text-amber-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white">21+</div>
-                <div className="text-xs text-navy-600 mt-1">Years Experience</div>
+          {/* Left — Stats */}
+          <dl className="grid grid-cols-2 gap-4" aria-label="Tony Drives key statistics">
+            {stats.map((stat) => (
+              <div key={stat.label} className="card-base p-6 text-center card-hover">
+                <stat.icon className="w-8 h-8 text-amber-500 mx-auto mb-3" aria-hidden="true" />
+                <dd className="text-3xl font-bold text-white" itemProp={stat.label === 'Years Experience' ? 'foundingDate' : undefined}>
+                  {stat.value}
+                </dd>
+                <dt className="text-xs text-navy-600 mt-1">{stat.label}</dt>
               </div>
-              <div className="card-base p-6 text-center card-hover">
-                <Award className="w-8 h-8 text-amber-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white">0</div>
-                <div className="text-xs text-navy-600 mt-1">Accidents</div>
-              </div>
-              <div className="card-base p-6 text-center card-hover">
-                <Route className="w-8 h-8 text-amber-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white">3</div>
-                <div className="text-xs text-navy-600 mt-1">Upstate Counties</div>
-              </div>
-              <div className="card-base p-6 text-center card-hover">
-                <Shield className="w-8 h-8 text-amber-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white">24/7</div>
-                <div className="text-xs text-navy-600 mt-1">Rush Available</div>
-              </div>
-            </div>
-          </div>
+            ))}
+          </dl>
 
           {/* Right — Text */}
           <div className="space-y-6">
@@ -37,21 +37,24 @@ export default function About() {
               <Shield className="w-3 h-3" />
               About Tony Drives
             </div>
-            <h2 className="heading-primary">
+            <h2 id="about-heading" className="heading-primary">
               Dependable Transport from a{' '}
               <span className="text-gradient">Proud Veteran-Owned Business</span>
             </h2>
-            <p className="text-navy-600 leading-relaxed">
+            <p className="text-navy-600 leading-relaxed" itemProp="description">
               Tony Drives is a highly disciplined, veteran-owned transport service founded by
-              professional driver Tony Zamberlin. Bringing over 21 years of flawless operational
-              experience on South Carolina roadways and interstate lanes, Tony specializes
-              strictly in professional delivery driving, precision vehicle handling, and
-              high-standard passenger transport.
+              professional driver{' '}
+              <span itemProp="founder" itemScope itemType="https://schema.org/Person">
+                <span itemProp="name">Tony Zamberlin</span>
+              </span>
+              . Bringing over 21 years of flawless operational experience on South Carolina
+              roadways and interstate lanes, Tony specializes strictly in professional delivery
+              driving, precision vehicle handling, and high-standard passenger transport.
             </p>
             <p className="text-navy-600 leading-relaxed">
               We excel in urgent time-critical hotshots, routine scheduled contracts, heavy
-              physical loading, and close-proximity urban maneuvering across the Anderson,
-              Greenville, and Spartanburg regions.
+              physical loading, and close-proximity urban maneuvering across the{' '}
+              <span itemProp="areaServed">Anderson, Greenville, and Spartanburg</span> regions.
             </p>
           </div>
         </div>

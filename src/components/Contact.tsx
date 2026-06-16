@@ -29,14 +29,14 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding bg-navy-800/50">
+    <section id="contact" className="section-padding bg-navy-800/50" aria-labelledby="contact-heading">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16">
           <div className="badge mx-auto mb-4">
             <MapPin className="w-3 h-3" />
             Contact
           </div>
-          <h2 className="heading-primary mb-4">
+          <h2 id="contact-heading" className="heading-primary mb-4">
             Contact & <span className="text-gradient">Social Channels</span>
           </h2>
           <p className="text-navy-600 max-w-2xl mx-auto">
@@ -49,12 +49,13 @@ export default function Contact() {
           {/* Direct Contact */}
           <div className="card-base p-6 md:p-8 space-y-5 card-hover">
             <h3 className="text-lg font-bold text-white">Direct Contact</h3>
-            <div className="space-y-4">
+            <address className="not-italic space-y-4">
               <a
                 href="tel:+18645550123"
                 className="flex items-center gap-3 group"
+                aria-label="Call Tony Drives by phone"
               >
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors" aria-hidden="true">
                   <Phone className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
@@ -65,7 +66,7 @@ export default function Contact() {
                 </div>
               </a>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                   <Mail className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
@@ -73,13 +74,14 @@ export default function Contact() {
                   <a
                     href="mailto:tonyzamberlin@gmail.com"
                     className="text-white font-medium hover:text-amber-500 transition-colors text-sm"
+                    aria-label="Email Tony Drives at tonyzamberlin@gmail.com"
                   >
                     tonyzamberlin@gmail.com
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                   <MapPin className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
@@ -89,7 +91,7 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </div>
+            </address>
           </div>
 
           {/* Social Channels */}
@@ -103,9 +105,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="card-base p-4 group hover:border-amber-500/20"
+                  aria-label={`Visit Tony Drives on ${social.name} — ${social.handle}`}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <div className={`w-8 h-8 rounded-lg border ${social.bg} flex items-center justify-center`}>
+                    <div className={`w-8 h-8 rounded-lg border ${social.bg} flex items-center justify-center`} aria-hidden="true">
                       <ExternalLink className={`w-3.5 h-3.5 ${social.color}`} />
                     </div>
                     <span className="text-sm font-bold text-white">{social.name}</span>

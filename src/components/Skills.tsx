@@ -23,14 +23,14 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding" aria-labelledby="skills-heading">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16">
           <div className="badge mx-auto mb-4">
             <ShieldCheck className="w-3 h-3" />
             Core Skills
           </div>
-          <h2 className="heading-primary mb-4">
+          <h2 id="skills-heading" className="heading-primary mb-4">
             Core Operational <span className="text-gradient">Skills</span>
           </h2>
           <p className="text-navy-600 max-w-2xl mx-auto">
@@ -40,16 +40,20 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {skills.map((skill) => (
-            <div
+            <article
               key={skill.title}
               className="card-base card-hover p-8 text-center space-y-5"
+              aria-label={skill.title}
             >
-              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto">
+              <div
+                className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto"
+                aria-hidden="true"
+              >
                 <skill.icon className="w-8 h-8 text-amber-500" />
               </div>
               <h3 className="text-xl font-bold text-white">{skill.title}</h3>
               <p className="text-navy-600 leading-relaxed text-sm">{skill.description}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
