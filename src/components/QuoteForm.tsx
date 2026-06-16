@@ -1,0 +1,217 @@
+import { useState, type FormEvent } from 'react';
+import { Send, AlertTriangle, Mail } from 'lucide-react';
+
+const serviceOptions = [
+  '24-Hour Rush Delivery',
+  'Scheduled Delivery Route',
+  'Facebook Marketplace Pickup',
+  'Other Delivery Request',
+];
+
+export default function QuoteForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    serviceType: '',
+    pickup: '',
+    dropoff: '',
+    details: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
+  return (
+    <section id="quote" className="section-padding">
+      <div className="section-container">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="badge mx-auto mb-4">
+            <Send className="w-3 h-3" />
+            Free Quote
+          </div>
+          <h2 className="heading-primary mb-4">
+            Get a <span className="text-gradient">Free Quote</span>
+          </h2>
+          <p className="text-navy-600 max-w-2xl mx-auto">
+            Submit your delivery details and Tony Drives will review your request immediately.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Form */}
+          <div className="lg:col-span-3">
+            <form onSubmit={handleSubmit} className="card-base p-6 md:p-8 space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Full Name / Business Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name or business"
+                    className="input-field"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="(864) 555-0123"
+                    className="input-field"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">
+                  Service Type
+                </label>
+                <select
+                  name="serviceType"
+                  value={formData.serviceType}
+                  onChange={handleChange}
+                  className="input-field appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_12px_center] bg-[length:20px]"
+                  required
+                >
+                  <option value="" className="bg-navy-900 text-navy-600">Select a service...</option>
+                  {serviceOptions.map((opt) => (
+                    <option key={opt} value={opt} className="bg-navy-900 text-white">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Pickup Location
+                  </label>
+                  <input
+                    type="text"
+                    name="pickup"
+                    value={formData.pickup}
+                    onChange={handleChange}
+                    placeholder="e.g., Anderson, SC"
+                    className="input-field"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Drop-off Destination
+                  </label>
+                  <input
+                    type="text"
+                    name="dropoff"
+                    value={formData.dropoff}
+                    onChange={handleChange}
+                    placeholder="e.g., Greenville, SC"
+                    className="input-field"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">
+                  Job Details / Item Description
+                </label>
+                <textarea
+                  name="details"
+                  value={formData.details}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="e.g., Need an urgent part delivered tonight or Couch pickup from Marketplace"
+                  className="input-field resize-none"
+                  required
+                />
+              </div>
+
+              <button type="submit" className="btn-primary w-full gap-2">
+                <Send className="w-4 h-4" />
+                Submit Quote Request
+              </button>
+
+              {submitted && (
+                <div className="text-center py-3 bg-amber-500/10 border border-amber-500/20 rounded-lg text-amber-500 text-sm font-medium">
+                  Quote Request Form Created! Tony Drives will review your request immediately.
+                </div>
+              )}
+            </form>
+          </div>
+
+          {/* Right Side — Direct Booking */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="card-base p-6 md:p-8 space-y-5">
+              <div className="flex items-center gap-2 text-amber-500">
+                <AlertTriangle className="w-5 h-5" />
+                <span className="text-sm font-bold uppercase tracking-wider">
+                  Urgent / Instant Booking
+                </span>
+              </div>
+              <p className="text-navy-600 text-sm leading-relaxed">
+                For immediate 24-hour rush deliveries or urgent cargo coordination, contact
+                Tony Drives directly for the fastest response time.
+              </p>
+              <div className="card-base p-4 flex items-center gap-3 border-amber-500/20">
+                <Mail className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                <div>
+                  <div className="text-xs text-navy-600 mb-1">Direct Email</div>
+                  <a
+                    href="mailto:tonyzamberlin@gmail.com"
+                    className="text-white font-medium hover:text-amber-500 transition-colors text-sm"
+                  >
+                    tonyzamberlin@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-base p-6 md:p-8 space-y-4 border-amber-500/20">
+              <h3 className="text-lg font-bold text-white">Service Areas</h3>
+              <div className="space-y-2 text-sm text-navy-600">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-amber-500" />
+                  Anderson, SC
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-amber-500" />
+                  Greenville, SC
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-amber-500" />
+                  Spartanburg, SC
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-amber-500/50" />
+                  Surrounding Upstate Areas
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
