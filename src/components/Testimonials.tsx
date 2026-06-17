@@ -2,10 +2,10 @@ import { Star, MessageSquare } from 'lucide-react';
 
 const testimonials = [
   {
-    header: 'Commercial Courier Review',
+    header: 'Food & Errand Delivery Review',
     placeholder:
-      '[Placeholder for verified client quote regarding a Tony Drives 24-hour rush delivery or commercial route in Anderson/Greenville/Spartanburg]',
-    attribution: 'Client Name / Company, Upstate SC',
+      'I ordered some food and Tony went and picked it up and delivered it for me. I recommend him for any of your delivery needs.',
+    attribution: 'Kruti',
   },
   {
     header: 'Facebook Marketplace Pickup Review',
