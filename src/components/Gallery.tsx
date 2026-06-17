@@ -1,5 +1,16 @@
 import { ImagePlus } from 'lucide-react';
 
+const photos: (string | null)[] = [
+  '/images/gallery/IMG_20230819_072928878_HDR.jpg',
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+];
+
 export default function Gallery() {
   return (
     <section id="gallery" className="section-padding bg-navy-800/50" aria-labelledby="gallery-heading">
@@ -15,15 +26,23 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, i) => (
+          {photos.map((src, i) => (
             <div
               key={i}
               className="relative min-h-[260px] rounded-xl overflow-hidden border border-navy-700/50 card-hover bg-navy-900/50"
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <ImagePlus className="w-12 h-12 text-navy-600" />
-                <span className="text-navy-600 text-sm">Add photo</span>
-              </div>
+              {src ? (
+                <img
+                  src={src}
+                  alt={`Tony Drives delivery photo ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <ImagePlus className="w-12 h-12 text-navy-600" />
+                  <span className="text-navy-600 text-sm">Add photo</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
