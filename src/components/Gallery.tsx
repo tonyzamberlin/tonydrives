@@ -1,8 +1,8 @@
 import { ImagePlus } from 'lucide-react';
 
 const photos: (string | null)[] = [
-  '/images/gallery/IMG_20230819_072928878_HDR.jpg',
-  null,
+  '/images/gallery/IMG_20260531_183731591_HDR.jpg',
+  '/images/gallery/Screenshot_20260607-130955.TikTok.png',
   null,
   null,
   null,

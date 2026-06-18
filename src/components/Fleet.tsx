@@ -6,6 +6,7 @@ const vehicles = [
     title: '2019 Kia Sedona Minivan',
     capability:
       'Rapid, secure, weather-proof transit. Ideal for express 24-hour rush deliveries, high-priority courier packages, medical or legal assets, and medium-sized Marketplace electronics or goods.',
+    photo: null,
     placeholderLabel: 'Kia Sedona Photo',
   },
   {
@@ -13,6 +14,7 @@ const vehicles = [
     title: 'Ford F-250 Pickup Truck (with Trailer)',
     capability:
       'Heavy-duty hauling and high-capacity loading. Perfect for oversized Facebook Marketplace pickups, scheduled furniture and appliance distribution, building materials, and large-scale cargo across Upstate SC terrain.',
+    photo: '/images/fleet/FB_IMG_1765689110093.jpg',
     placeholderLabel: 'F-250 Truck & Trailer Photo',
   },
 ];
@@ -43,15 +45,24 @@ export default function Fleet() {
               itemScope
               itemType="https://schema.org/Vehicle"
             >
-              {/* Image Placeholder */}
-              <div
-                className="image-placeholder min-h-[240px] md:min-h-[300px] rounded-none rounded-t-xl flex-col gap-3 border-x-0 border-t-0 border-amber-500/10"
-                role="img"
-                aria-label={`Photo placeholder for ${vehicle.title}`}
-              >
-                <vehicle.icon className="w-16 h-16 text-amber-500/30" aria-hidden="true" />
-                <span className="text-navy-600 font-medium">{vehicle.placeholderLabel}</span>
-                <span className="text-navy-700 text-xs">Drop your vehicle photo here</span>
+              {/* Image */}
+              <div className="relative min-h-[240px] md:min-h-[300px] rounded-none rounded-t-xl overflow-hidden">
+                {vehicle.photo ? (
+                  <img
+                    src={vehicle.photo}
+                    alt={vehicle.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className="image-placeholder h-full min-h-[240px] md:min-h-[300px] rounded-none rounded-t-xl flex-col gap-3 border-x-0 border-t-0 border-amber-500/10"
+                    role="img"
+                    aria-label={`Photo placeholder for ${vehicle.title}`}
+                  >
+                    <vehicle.icon className="w-16 h-16 text-amber-500/30" aria-hidden="true" />
+                    <span className="text-navy-600 font-medium">{vehicle.placeholderLabel}</span>
+                  </div>
+                )}
               </div>
 
               {/* Details */}
