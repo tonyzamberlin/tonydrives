@@ -1,8 +1,7 @@
-import { Shield, Award, Route } from 'lucide-react';
+import { Shield, Route } from 'lucide-react';
 
 const stats = [
   { icon: Shield, value: '21+', label: 'Years Experience' },
-  { icon: Award, value: '0', label: 'Accidents on Record' },
   { icon: Route, value: '3', label: 'Upstate Counties Served' },
   { icon: Shield, value: '24/7', label: 'Rush Service Available' },
 ];
@@ -20,8 +19,8 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Stats */}
           <dl className="grid grid-cols-2 gap-4" aria-label="Tony Drives key statistics">
-            {stats.map((stat) => (
-              <div key={stat.label} className="card-base p-6 text-center card-hover">
+            {stats.map((stat, i) => (
+              <div key={stat.label} className={`card-base p-6 text-center card-hover${i === stats.length - 1 && stats.length % 2 !== 0 ? ' col-span-2' : ''}`}>
                 <stat.icon className="w-8 h-8 text-amber-500 mx-auto mb-3" aria-hidden="true" />
                 <dd className="text-3xl font-bold text-white" itemProp={stat.label === 'Years Experience' ? 'foundingDate' : undefined}>
                   {stat.value}
