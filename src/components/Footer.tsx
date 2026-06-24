@@ -1,4 +1,4 @@
-import { Truck, Shield } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -10,11 +10,14 @@ export default function Footer() {
       <div className="section-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center" aria-hidden="true">
-              <Truck className="w-4 h-4 text-navy-900" />
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="Tony Drives — Courier & Delivery Services"
+              className="h-9 w-auto rounded-md"
+              itemProp="logo"
+            />
             <div>
-              <div className="text-sm font-bold text-white" itemProp="name">Tony Drives</div>
+              <span className="sr-only" itemProp="name">Tony Drives</span>
               <div className="text-xs text-navy-600" itemProp="description">
                 Professional Commercial Driver & Local Delivery Specialist
               </div>

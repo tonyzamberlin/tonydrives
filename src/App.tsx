@@ -6,6 +6,7 @@ import Fleet from './components/Fleet';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Testimonials from './components/Testimonials';
+import CustomerAppreciation from './components/CustomerAppreciation';
 import Gallery from './components/Gallery';
 import QuoteForm from './components/QuoteForm';
 import Contact from './components/Contact';
@@ -29,6 +30,7 @@ export default function App() {
         <Skills />
         <Experience />
         <Testimonials />
+        <CustomerAppreciation />
         <Gallery />
         <QuoteForm />
         <Contact />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Shield, Truck } from 'lucide-react';
+import { Menu, X, Shield } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -32,19 +32,13 @@ export default function Header() {
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Brand */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-amber-500 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-400 transition-colors">
-              <Truck className="w-5 h-5 md:w-6 md:h-6 text-navy-900" />
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-lg md:text-xl font-bold text-white leading-tight">
-                TONY DRIVES
-              </div>
-              <div className="text-[10px] md:text-xs text-navy-600 font-medium tracking-wide">
-                Upstate Delivery & Transport
-              </div>
-            </div>
-            <div className="badge ml-2 hidden md:flex">
+          <a href="#" className="flex items-center gap-3 group" aria-label="Tony Drives — home">
+            <img
+              src="/images/logo.jpg"
+              alt="Tony Drives — Courier & Delivery Services"
+              className="h-9 md:h-11 w-auto rounded-md flex-shrink-0"
+            />
+            <div className="badge ml-1 hidden md:flex">
               <Shield className="w-3 h-3" />
               Veteran-Owned
             </div>

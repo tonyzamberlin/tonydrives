@@ -11,19 +11,11 @@ const socials = [
   },
   {
     name: 'Facebook',
-    handle: '/Tony-Zamberlin',
+    handle: '/tonydrives864',
     description: 'Connect with Tony on Facebook',
-    href: 'https://facebook.com/Tony-Zamberlin',
+    href: 'https://facebook.com/tonydrives864',
     color: 'text-blue-400',
     bg: 'bg-blue-500/10 border-blue-500/20',
-  },
-  {
-    name: 'Instagram',
-    handle: '/tonyzamberlin',
-    description: 'Follow along on Instagram',
-    href: 'https://instagram.com/tonyzamberlin',
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10 border-purple-500/20',
   },
 ];
 
@@ -72,11 +64,11 @@ export default function Contact() {
                 <div>
                   <div className="text-xs text-navy-600">Email</div>
                   <a
-                    href="mailto:tonyzamberlin@gmail.com"
+                    href="mailto:tony@tonydrives.com"
                     className="text-white font-medium hover:text-amber-500 transition-colors text-sm"
-                    aria-label="Email Tony Drives at tonyzamberlin@gmail.com"
+                    aria-label="Email Tony Drives at tony@tonydrives.com"
                   >
-                    tonyzamberlin@gmail.com
+                    tony@tonydrives.com
                   </a>
                 </div>
               </div>
@@ -97,7 +89,7 @@ export default function Contact() {
           {/* Social Channels */}
           <div className="md:col-span-2 card-base p-6 md:p-8 space-y-5 card-hover">
             <h3 className="text-lg font-bold text-white">Social Channels</h3>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4">
               {socials.map((social) => (
                 <a
                   key={social.name}

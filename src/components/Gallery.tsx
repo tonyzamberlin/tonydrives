@@ -1,14 +1,14 @@
 import { ImagePlus } from 'lucide-react';
 
-const photos: (string | null)[] = [
-  '/images/gallery/IMG_20260531_183731591_HDR.jpg',
-  '/images/gallery/Screenshot_20260607-130955.TikTok.png',
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
+const photos: { src: string; alt: string }[] = [
+  { src: '/images/gallery/web-van-branded.jpg', alt: 'Tony Drives branded delivery van with courier & delivery services decal' },
+  { src: '/images/gallery/web-tony-fedex.jpg', alt: 'Tony with a Penske rental truck and in delivery uniform on the job' },
+  { src: '/images/gallery/web-loading-crates.jpg', alt: 'Loading grocery and retail crates into the delivery vehicle at the store' },
+  { src: '/images/gallery/web-amazon-porch.jpg', alt: 'Package delivered safely to a customer’s front porch' },
+  { src: '/images/gallery/web-food-delivery.jpg', alt: 'Food and errand order dropped off at a customer’s door' },
+  { src: '/images/gallery/web-bulk-boxes.jpg', alt: 'A full cart of boxed orders staged for a bulk delivery run' },
+  { src: '/images/gallery/web-marketplace-planter.jpg', alt: 'Bulky Facebook Marketplace pickup loaded for transport' },
+  { src: '/images/gallery/web-truck-van.jpg', alt: 'Tony Drives fleet — pickup with loaded trailer and delivery minivan' },
 ];
 
 export default function Gallery() {
@@ -26,23 +26,17 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {photos.map((src, i) => (
+          {photos.map((photo, i) => (
             <div
-              key={i}
+              key={photo.src}
               className="relative min-h-[260px] rounded-xl overflow-hidden border border-navy-700/50 card-hover bg-navy-900/50"
             >
-              {src ? (
-                <img
-                  src={src}
-                  alt={`Tony Drives delivery photo ${i + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <ImagePlus className="w-12 h-12 text-navy-600" />
-                  <span className="text-navy-600 text-sm">Add photo</span>
-                </div>
-              )}
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading={i < 4 ? undefined : 'lazy'}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           ))}
         </div>

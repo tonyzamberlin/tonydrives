@@ -15,9 +15,9 @@ const skills = [
   },
   {
     icon: MapPin,
-    title: 'Rideshare & Transport Safety',
+    title: 'Transport Safety',
     description:
-      'A deep background in high-standard passenger transportation, close-proximity urban navigation, and premier customer service across South Carolina, ensuring passengers and cargo arrive safely.',
+      'A safety-first approach to every courier run — secure cargo handling, careful loading and unloading, and defensive driving across South Carolina. Every package and delivery arrives intact, on time, and exactly where it needs to be.',
   },
 ];
 

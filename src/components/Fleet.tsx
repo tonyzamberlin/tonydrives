@@ -6,7 +6,7 @@ const vehicles = [
     title: '2019 Kia Sedona Minivan',
     capability:
       'Rapid, secure, weather-proof transit. Ideal for express 24-hour rush deliveries, high-priority courier packages, medical or legal assets, and medium-sized Marketplace electronics or goods.',
-    photo: null,
+    photo: '/images/fleet/web-kia-loaded.jpg',
     placeholderLabel: 'Kia Sedona Photo',
   },
   {

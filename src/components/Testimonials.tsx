@@ -7,18 +7,6 @@ const testimonials = [
       'I ordered some food and Tony went and picked it up and delivered it for me. I recommend him for any of your delivery needs.',
     attribution: 'Kruti',
   },
-  {
-    header: 'Facebook Marketplace Pickup Review',
-    placeholder:
-      '[Placeholder for verified customer quote regarding bulky item transit, furniture loading, or direct-to-consumer delivery support from Tony Drives]',
-    attribution: 'Customer Name, Local Route',
-  },
-  {
-    header: 'Scheduled Route Delivery Review',
-    placeholder:
-      '[Placeholder for verified supervisor, rideshare client, or business manager text regarding routine scheduled drops or safe asset transportation]',
-    attribution: 'Logistics Partner',
-  },
 ];
 
 export default function Testimonials() {
@@ -38,7 +26,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="max-w-2xl mx-auto">
           {testimonials.map((t) => (
             <article
               key={t.header}
