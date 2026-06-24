@@ -1,4 +1,4 @@
-import { Car, Package, Users } from 'lucide-react';
+import { Car, Package, Truck } from 'lucide-react';
 
 const metrics = [
   {
@@ -16,11 +16,11 @@ const metrics = [
       'Years of commercial local hauling, route logistics, asset security, and tight delivery timeline fulfillment.',
   },
   {
-    icon: Users,
-    role: 'Rideshare Driver Experience',
+    icon: Truck,
+    role: 'Package & Product Transport',
     years: '21+',
     detail:
-      'Years of high-level passenger transport, close-proximity urban navigation, and premier customer service across South Carolina.',
+      'Years of high-level package and product transport, close-proximity urban navigation, and premier customer service across South Carolina.',
   },
 ];
 

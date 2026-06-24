@@ -48,7 +48,7 @@ export default function About() {
               </span>
               . Bringing over 21 years of flawless operational experience on South Carolina
               roadways and interstate lanes, Tony specializes strictly in professional delivery
-              driving, precision vehicle handling, and high-standard passenger transport.
+              driving, precision vehicle handling, and high-standard package and product transport.
             </p>
             <p className="text-navy-600 leading-relaxed">
               We excel in urgent time-critical hotshots, routine scheduled contracts, heavy
