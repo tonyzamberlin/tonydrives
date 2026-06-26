@@ -36,7 +36,7 @@ export default function Header() {
             <img
               src="/images/logo.jpg"
               alt="Tony Drives — Courier & Delivery Services"
-              className="h-9 md:h-11 w-auto rounded-md flex-shrink-0"
+              className="h-11 md:h-14 w-auto rounded-md flex-shrink-0"
             />
             <div className="badge ml-1 hidden md:flex">
               <Shield className="w-3 h-3" />

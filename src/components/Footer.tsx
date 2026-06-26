@@ -13,7 +13,7 @@ export default function Footer() {
             <img
               src="/images/logo.jpg"
               alt="Tony Drives — Courier & Delivery Services"
-              className="h-9 w-auto rounded-md"
+              className="h-12 w-auto rounded-md"
               itemProp="logo"
             />
             <div>
