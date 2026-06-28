@@ -203,11 +203,11 @@ export default function QuoteForm() {
                 <div>
                   <div className="text-xs text-navy-600 mb-1">Direct Email</div>
                   <a
-                    href="mailto:tonyzamberlin@gmail.com"
+                    href="mailto:tony@tonydrives.com"
                     className="text-white font-medium hover:text-amber-500 transition-colors text-sm"
-                    aria-label="Email Tony Drives at tonyzamberlin@gmail.com"
+                    aria-label="Email Tony Drives at tony@tonydrives.com"
                   >
-                    tonyzamberlin@gmail.com
+                    tony@tonydrives.com
                   </a>
                 </div>
               </div>
