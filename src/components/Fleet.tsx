@@ -6,7 +6,7 @@ const vehicles = [
     title: '2019 Kia Sedona Minivan',
     capability:
       'Rapid, secure, weather-proof transit. Ideal for express 24-hour rush deliveries, high-priority courier packages, medical or legal assets, and medium-sized Marketplace electronics or goods.',
-    photo: '/images/fleet/web-kia-loaded.jpg',
+    photo: '/images/fleet/FB_IMG_1765689110093.jpg',
     placeholderLabel: 'Kia Sedona Photo',
   },
   {
@@ -14,7 +14,7 @@ const vehicles = [
     title: 'Ford F-250 Pickup Truck (with Trailer)',
     capability:
       'Heavy-duty hauling and high-capacity loading. Perfect for oversized Facebook Marketplace pickups, scheduled furniture and appliance distribution, building materials, and large-scale cargo across Upstate SC terrain.',
-    photo: '/images/fleet/FB_IMG_1765689110093.jpg',
+    photo: '/images/fleet/web-f250-truck.jpg',
     placeholderLabel: 'F-250 Truck & Trailer Photo',
   },
 ];
