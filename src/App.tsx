@@ -4,7 +4,6 @@ import About from './components/About';
 import Services from './components/Services';
 import Fleet from './components/Fleet';
 import Skills from './components/Skills';
-import Experience from './components/Experience';
 import Testimonials from './components/Testimonials';
 import CustomerAppreciation from './components/CustomerAppreciation';
 import Gallery from './components/Gallery';
@@ -28,7 +27,6 @@ export default function App() {
         <Services />
         <Fleet />
         <Skills />
-        <Experience />
         <Testimonials />
         <CustomerAppreciation />
         <Gallery />

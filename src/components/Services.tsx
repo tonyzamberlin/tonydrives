@@ -23,7 +23,7 @@ const services = [
     icon: ShoppingCart,
     title: 'Facebook Marketplace Pickup & Delivery',
     description:
-      'Eliminating the hassle of buying large items online. Secure loading, transit, and door-to-door delivery for furniture, appliances, electronics, and bulky items.',
+      'Eliminating the hassle of buying large items online — secure loading and transit for furniture, appliances, electronics, and bulky items. We pick up and deliver directly to your exterior doorstep, driveway, or garage. We do not bring items inside the home or navigate stairs.',
     accent: 'from-green-500/20 to-amber-500/20',
     iconBg: 'bg-green-500/10 border-green-500/20',
     iconColor: 'text-green-400',
