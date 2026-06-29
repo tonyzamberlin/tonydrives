@@ -216,7 +216,7 @@ export default function QuoteForm() {
             <div className="card-base p-6 md:p-8 space-y-4 border-amber-500/20">
               <h3 className="text-lg font-bold text-white">Service Areas</h3>
               <ul className="space-y-2 text-sm text-navy-600" aria-label="Tony Drives service areas in South Carolina">
-                {['Anderson, SC', 'Greenville, SC', 'Spartanburg, SC', 'Surrounding Upstate Areas'].map((area, i) => (
+                {['Anderson, SC', 'Greenville, SC', 'Clemson, SC', 'Surrounding Upstate Areas'].map((area, i) => (
                   <li key={area} className="flex items-center gap-2">
                     <div
                       className={`w-2 h-2 rounded-full ${i < 3 ? 'bg-amber-500' : 'bg-amber-500/50'} flex-shrink-0`}

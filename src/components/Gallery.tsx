@@ -1,13 +1,14 @@
 import { ImagePlus } from 'lucide-react';
 
-const photos: { src: string; alt: string }[] = [
+const photos: { src: string; alt: string; pos?: string }[] = [
   { src: '/images/gallery/web-van-branded.jpg', alt: 'Tony Drives branded delivery van with courier & delivery services decal' },
   { src: '/images/gallery/web-tony-fedex.jpg', alt: 'Tony with a Penske rental truck and in delivery uniform on the job' },
   { src: '/images/gallery/web-loading-crates.jpg', alt: 'Loading grocery and retail crates into the delivery vehicle at the store' },
   { src: '/images/gallery/web-amazon-porch.jpg', alt: 'Package delivered safely to a customer’s front porch' },
   { src: '/images/gallery/web-food-delivery.jpg', alt: 'Food and errand order dropped off at a customer’s door' },
   { src: '/images/gallery/web-bulk-boxes.jpg', alt: 'A full cart of boxed orders staged for a bulk delivery run' },
-  { src: '/images/gallery/web-marketplace-planter.jpg', alt: 'Bulky Facebook Marketplace pickup loaded for transport' },
+  { src: '/images/gallery/web-marketplace-planter.jpg', alt: 'Dog house loaded in the van for pickup and transport' },
+  { src: '/images/gallery/web-dog-delivery.jpg', alt: 'Dog house delivered at the customer’s home — Doggie will be happy', pos: 'center top' },
   { src: '/images/gallery/web-kia-loaded.jpg', alt: 'Kia Sedona loaded with packages and parcels ready for delivery' },
   { src: '/images/gallery/web-tv-delivery.jpg', alt: 'Large 65-inch big-screen TV safely loaded in the van for delivery' },
 ];
@@ -36,6 +37,7 @@ export default function Gallery() {
                 src={photo.src}
                 alt={photo.alt}
                 loading={i < 4 ? undefined : 'lazy'}
+                style={photo.pos ? { objectPosition: photo.pos } : undefined}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>

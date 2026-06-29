@@ -37,10 +37,10 @@ export default function About() {
             </div>
             <h2 id="about-heading" className="heading-primary">
               Dependable Transport from a{' '}
-              <span className="text-gradient">Proud Veteran-Owned Business</span>
+              <span className="text-gradient">Proud Military Veteran-Owned Business</span>
             </h2>
             <p className="text-navy-600 leading-relaxed" itemProp="description">
-              Tony Drives is a highly disciplined, veteran-owned transport service founded by
+              Tony Drives is a highly disciplined, military veteran-owned transport service founded by
               professional driver{' '}
               <span itemProp="founder" itemScope itemType="https://schema.org/Person">
                 <span itemProp="name">Tony Zamberlin</span>
@@ -51,8 +51,9 @@ export default function About() {
             </p>
             <p className="text-navy-600 leading-relaxed">
               We excel in urgent time-critical hotshots, routine scheduled contracts, heavy
-              physical loading, and close-proximity urban maneuvering across the{' '}
-              <span itemProp="areaServed">Anderson, Greenville, and Spartanburg</span> regions.
+              physical loading, and close-proximity urban maneuvering across the Upstate of
+              South Carolina, including the{' '}
+              <span itemProp="areaServed">Anderson, Greenville, and Clemson</span> areas.
             </p>
           </div>
         </div>

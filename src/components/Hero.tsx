@@ -22,7 +22,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-3">
               <div className="badge">
                 <Shield className="w-3 h-3" />
-                Veteran-Owned Business
+                Military Veteran-Owned Business
               </div>
               <div className="badge">
                 <Clock className="w-3 h-3" />
@@ -32,20 +32,20 @@ export default function Hero() {
 
             <div className="space-y-4">
               <h1 className="heading-primary">
-                Veteran-Owned{' '}
+                Military Veteran-Owned{' '}
                 <span className="text-gradient">24-Hour Rush Delivery</span>,
                 Courier & Scheduled Transport
               </h1>
               <div className="flex items-center gap-2 text-amber-500 font-semibold">
                 <MapPin className="w-5 h-5 flex-shrink-0" />
                 <span className="text-sm md:text-base">
-                  Serving the Upstate of South Carolina — Anderson, Greenville & Spartanburg
+                  Serving the Upstate of South Carolina — Anderson, Greenville & Clemson
                 </span>
               </div>
             </div>
 
             <p className="text-base md:text-lg text-navy-600 leading-relaxed max-w-2xl">
-              With over 21 years of accident-free professional driving experience, Tony Drives
+              With over 21 years of professional driving experience, Tony Drives
               offers elite local transport services. We specialize in high-priority 24-hour rush
               courier logistics and time-sensitive deliveries, while also offering convenient
               scheduled route services and direct Facebook Marketplace pickup assistance.
@@ -91,10 +91,6 @@ export default function Hero() {
                       <div>
                         <div className="text-lg font-bold text-gradient">21+</div>
                         <div className="text-[10px] text-white/60">Yrs Exp.</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gradient">0</div>
-                        <div className="text-[10px] text-white/60">Accidents</div>
                       </div>
                     </div>
                   </div>

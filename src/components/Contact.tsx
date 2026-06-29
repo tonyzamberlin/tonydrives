@@ -32,7 +32,7 @@ export default function Contact() {
             Contact & <span className="text-gradient">Social Channels</span>
           </h2>
           <p className="text-navy-600 max-w-2xl mx-auto">
-            Need a dependable, highly trained driver across Anderson, Greenville, and Spartanburg?
+            Need a dependable, highly trained driver across Anderson, Greenville, and Clemson?
             Reach out today to secure Tony Drives.
           </p>
         </div>
