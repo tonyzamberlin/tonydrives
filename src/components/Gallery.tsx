@@ -9,6 +9,7 @@ const photos: { src: string; alt: string }[] = [
   { src: '/images/gallery/web-bulk-boxes.jpg', alt: 'A full cart of boxed orders staged for a bulk delivery run' },
   { src: '/images/gallery/web-marketplace-planter.jpg', alt: 'Bulky Facebook Marketplace pickup loaded for transport' },
   { src: '/images/gallery/web-kia-loaded.jpg', alt: 'Kia Sedona loaded with packages and parcels ready for delivery' },
+  { src: '/images/gallery/web-tv-delivery.jpg', alt: 'Large 65-inch big-screen TV safely loaded in the van for delivery' },
 ];
 
 export default function Gallery() {
