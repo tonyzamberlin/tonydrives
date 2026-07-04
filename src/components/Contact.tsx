@@ -43,7 +43,7 @@ export default function Contact() {
             <h3 className="text-lg font-bold text-white">Direct Contact</h3>
             <address className="not-italic space-y-4">
               <a
-                href="tel:+18645550123"
+                href="tel:+18648447137"
                 className="flex items-center gap-3 group"
                 aria-label="Call Tony Drives by phone"
               >
@@ -53,7 +53,7 @@ export default function Contact() {
                 <div>
                   <div className="text-xs text-navy-600">Call or Text</div>
                   <div className="text-white font-medium group-hover:text-amber-500 transition-colors text-sm">
-                    Tap to Call
+                    (864) 844-7137
                   </div>
                 </div>
               </a>
