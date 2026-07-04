@@ -14,7 +14,10 @@ Deno.serve(async (req: Request) => {
   try {
     const { name, phone, serviceType, pickup, dropoff, details } = await req.json();
 
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") ?? "re_QQdqEpQH_JkUL5jEuRy6shRe3WE7BKh2V";
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (!RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not configured");
+    }
 
     const htmlBody = `
       <h2>New Quote Request — Tony Drives</h2>
