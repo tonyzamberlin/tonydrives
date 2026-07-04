@@ -8,6 +8,9 @@ const serviceOptions = [
   'Other Delivery Request',
 ];
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
 export default function QuoteForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,6 +21,8 @@ export default function QuoteForm() {
     details: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -25,10 +30,31 @@ export default function QuoteForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/send-quote-email`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const json = await res.json();
+      if (!res.ok || json.error) {
+        throw new Error(json.error ?? `Request failed (${res.status})`);
+      }
+      setSubmitted(true);
+      setFormData({ name: '', phone: '', serviceType: '', pickup: '', dropoff: '', details: '' });
+      setTimeout(() => setSubmitted(false), 6000);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -166,19 +192,24 @@ export default function QuoteForm() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary w-full gap-2">
+              <button
+                type="submit"
+                className="btn-primary w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={loading}
+              >
                 <Send className="w-4 h-4" aria-hidden="true" />
-                Submit Quote Request
+                {loading ? 'Sending...' : 'Submit Quote Request'}
               </button>
 
-              <div
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-              >
+              <div role="status" aria-live="polite" aria-atomic="true">
                 {submitted && (
                   <div className="text-center py-3 bg-amber-500/10 border border-amber-500/20 rounded-lg text-amber-500 text-sm font-medium">
-                    Quote request submitted! Tony Drives will review your request immediately.
+                    Quote request sent! Tony Drives will be in touch shortly.
+                  </div>
+                )}
+                {error && (
+                  <div className="text-center py-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm font-medium">
+                    {error}
                   </div>
                 )}
               </div>
