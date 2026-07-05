@@ -27,18 +27,16 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const { name, email, phone, pickupLocation, dropoffLocation, date, passengers, message } = body;
+    const { name, phone, serviceType, pickup, dropoff, details } = body;
 
-    const emailBody = `
-      <h2>New Quote Request</h2>
+    const html = `
+      <h2>New Quote Request — Tony Drives</h2>
       <p><strong>Name:</strong> ${name ?? "N/A"}</p>
-      <p><strong>Email:</strong> ${email ?? "N/A"}</p>
       <p><strong>Phone:</strong> ${phone ?? "N/A"}</p>
-      <p><strong>Pickup Location:</strong> ${pickupLocation ?? "N/A"}</p>
-      <p><strong>Dropoff Location:</strong> ${dropoffLocation ?? "N/A"}</p>
-      <p><strong>Date:</strong> ${date ?? "N/A"}</p>
-      <p><strong>Passengers:</strong> ${passengers ?? "N/A"}</p>
-      <p><strong>Message:</strong> ${message ?? "N/A"}</p>
+      <p><strong>Service Type:</strong> ${serviceType ?? "N/A"}</p>
+      <p><strong>Pickup Location:</strong> ${pickup ?? "N/A"}</p>
+      <p><strong>Drop-off Destination:</strong> ${dropoff ?? "N/A"}</p>
+      <p><strong>Job Details:</strong> ${details ?? "N/A"}</p>
     `;
 
     const resendRes = await fetch("https://api.resend.com/emails", {
@@ -51,14 +49,14 @@ Deno.serve(async (req: Request) => {
         from: "onboarding@resend.dev",
         to: "tony@tonydrives.com",
         subject: `New Quote Request from ${name ?? "Unknown"}`,
-        html: emailBody,
+        html,
       }),
     });
 
     const resendData = await resendRes.json();
 
     if (!resendRes.ok) {
-      throw new Error(resendData?.message ?? "Failed to send email via Resend");
+      throw new Error(resendData?.message ?? `Resend error: ${resendRes.status}`);
     }
 
     return new Response(
