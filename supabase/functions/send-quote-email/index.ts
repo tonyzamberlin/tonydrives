@@ -12,50 +12,62 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { name, phone, serviceType, pickup, dropoff, details } = await req.json();
-
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
       throw new Error("RESEND_API_KEY is not configured");
     }
 
-    const htmlBody = `
-      <h2>New Quote Request — Tony Drives</h2>
-      <table style="border-collapse:collapse;width:100%;max-width:600px;font-family:sans-serif;">
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;width:40%;">Name / Business</td><td style="padding:8px;">${name}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;">Phone</td><td style="padding:8px;">${phone}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;">Service Type</td><td style="padding:8px;">${serviceType}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;">Pickup Location</td><td style="padding:8px;">${pickup}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;">Drop-off Destination</td><td style="padding:8px;">${dropoff}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5;">Job Details</td><td style="padding:8px;">${details}</td></tr>
-      </table>
+    let body: Record<string, string>;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON in request body" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { name, email, phone, pickupLocation, dropoffLocation, date, passengers, message } = body;
+
+    const emailBody = `
+      <h2>New Quote Request</h2>
+      <p><strong>Name:</strong> ${name ?? "N/A"}</p>
+      <p><strong>Email:</strong> ${email ?? "N/A"}</p>
+      <p><strong>Phone:</strong> ${phone ?? "N/A"}</p>
+      <p><strong>Pickup Location:</strong> ${pickupLocation ?? "N/A"}</p>
+      <p><strong>Dropoff Location:</strong> ${dropoffLocation ?? "N/A"}</p>
+      <p><strong>Date:</strong> ${date ?? "N/A"}</p>
+      <p><strong>Passengers:</strong> ${passengers ?? "N/A"}</p>
+      <p><strong>Message:</strong> ${message ?? "N/A"}</p>
     `;
 
-    const res = await fetch("https://api.resend.com/emails", {
+    const resendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Tony Drives Quote Form <onboarding@resend.dev>",
-        to: ["tony@tonydrives.com"],
-        subject: `New Quote Request from ${name}`,
-        html: htmlBody,
+        from: "onboarding@resend.dev",
+        to: "tony@tonydrives.com",
+        subject: `New Quote Request from ${name ?? "Unknown"}`,
+        html: emailBody,
       }),
     });
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`Resend error: ${err}`);
+    const resendData = await resendRes.json();
+
+    if (!resendRes.ok) {
+      throw new Error(resendData?.message ?? "Failed to send email via Resend");
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  } catch (err) {
     return new Response(
-      JSON.stringify({ error: err.message }),
+      JSON.stringify({ success: true }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  } catch (e) {
+    return new Response(
+      JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
