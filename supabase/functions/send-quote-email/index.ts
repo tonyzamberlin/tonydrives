@@ -30,13 +30,17 @@ Deno.serve(async (req: Request) => {
     const { name, phone, serviceType, pickup, dropoff, details } = body;
 
     const html = `
-      <h2>New Quote Request — Tony Drives</h2>
-      <p><strong>Name:</strong> ${name ?? "N/A"}</p>
-      <p><strong>Phone:</strong> ${phone ?? "N/A"}</p>
-      <p><strong>Service Type:</strong> ${serviceType ?? "N/A"}</p>
-      <p><strong>Pickup Location:</strong> ${pickup ?? "N/A"}</p>
-      <p><strong>Drop-off Destination:</strong> ${dropoff ?? "N/A"}</p>
-      <p><strong>Job Details:</strong> ${details ?? "N/A"}</p>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #f9fafb; border-radius: 8px;">
+        <h2 style="color: #1e3a5f; margin-bottom: 20px;">New Quote Request — Tony Drives</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; width: 40%;"><strong>Name</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${name ?? "N/A"}</td></tr>
+          <tr><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280;"><strong>Phone</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${phone ?? "N/A"}</td></tr>
+          <tr><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280;"><strong>Service Type</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${serviceType ?? "N/A"}</td></tr>
+          <tr><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280;"><strong>Pickup</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${pickup ?? "N/A"}</td></tr>
+          <tr><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280;"><strong>Drop-off</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${dropoff ?? "N/A"}</td></tr>
+          <tr><td style="padding: 10px 0; color: #6b7280; vertical-align: top;"><strong>Details</strong></td><td style="padding: 10px 0;">${details ?? "N/A"}</td></tr>
+        </table>
+      </div>
     `;
 
     const resendRes = await fetch("https://api.resend.com/emails", {
@@ -46,9 +50,8 @@ Deno.serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Tony Drives Quote <onboarding@resend.dev>",
+        from: "Tony Drives Quote Form <onboarding@resend.dev>",
         to: ["tony@tonydrives.com"],
-        reply_to: phone ? undefined : undefined,
         subject: `New Quote Request from ${name ?? "Unknown"}`,
         html,
       }),
@@ -58,12 +61,12 @@ Deno.serve(async (req: Request) => {
 
     if (!resendRes.ok) {
       throw new Error(
-        resendData?.message ?? resendData?.name ?? JSON.stringify(resendData) ?? `Resend error: ${resendRes.status}`
+        resendData?.message ?? resendData?.name ?? JSON.stringify(resendData)
       );
     }
 
     return new Response(
-      JSON.stringify({ success: true, id: resendData.id }),
+      JSON.stringify({ success: true }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (e) {
