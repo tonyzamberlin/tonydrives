@@ -46,8 +46,9 @@ Deno.serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "onboarding@resend.dev",
-        to: "tony@tonydrives.com",
+        from: "Tony Drives Quote <onboarding@resend.dev>",
+        to: ["tony@tonydrives.com"],
+        reply_to: phone ? undefined : undefined,
         subject: `New Quote Request from ${name ?? "Unknown"}`,
         html,
       }),
@@ -56,11 +57,13 @@ Deno.serve(async (req: Request) => {
     const resendData = await resendRes.json();
 
     if (!resendRes.ok) {
-      throw new Error(resendData?.message ?? `Resend error: ${resendRes.status}`);
+      throw new Error(
+        resendData?.message ?? resendData?.name ?? JSON.stringify(resendData) ?? `Resend error: ${resendRes.status}`
+      );
     }
 
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, id: resendData.id }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (e) {
