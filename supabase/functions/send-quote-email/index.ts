@@ -50,7 +50,7 @@ Deno.serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Tony Drives Quote Form <onboarding@resend.dev>",
+        from: "Tony Drives Quote Form <quotes@tonydrives.com>",
         to: ["tony@tonydrives.com"],
         subject: `New Quote Request from ${name ?? "Unknown"}`,
         html,
