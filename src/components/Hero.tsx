@@ -1,4 +1,4 @@
-import { ArrowRight, Clock, Shield, MapPin } from 'lucide-react';
+import { ArrowRight, Clock, Shield, MapPin, Home } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -27,6 +27,10 @@ export default function Hero() {
               <div className="badge">
                 <Clock className="w-3 h-3" />
                 24-Hour Service
+              </div>
+              <div className="badge">
+                <Home className="w-3 h-3" />
+                Locally Owned &amp; Operated
               </div>
             </div>
 
